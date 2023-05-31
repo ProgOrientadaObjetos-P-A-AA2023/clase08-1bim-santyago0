@@ -22,12 +22,13 @@ public class Principal {
         Scanner entrada = new Scanner(System.in);
         boolean bandera = true;
         while (bandera) {
-            System.out.printf("%s\n%s\n%s\n%s\n%s\n",
+            System.out.printf("%s\n%s\n%s\n%s\n%s\n%s\n",
                     "Opciones",
                     "1) Ingrese Club",
                     "2) Listar Club",
                     "3) Ingrese Jugador",
-                    "4) Listar Jugador");
+                    "2) Listar Jugador",
+                    "5) Buscar un Jugador");
             int opcion = entrada.nextInt();
             if (opcion == 1) {
                 agregarClubs();
@@ -47,7 +48,11 @@ public class Principal {
                         if (opcion == 4) {
                             verJugadores();
                         }else{
-                            System.out.println("Opción incorrecta");
+                            if (opcion == 5) {
+                                buscarJugador();
+                            }else{
+                                System.out.println("Opción incorrecta");
+                            }
                         }
                     }
 
@@ -139,6 +144,24 @@ public class Principal {
         lectura.establecerJugadores();
         System.out.println(lectura);
         lectura.cerrarArchivo();
+    }
+    
+    public static void buscarJugador() {
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Ingrese el ombre del Jugador");
+        String nombre = entrada.nextLine();
+        
+        String nombreArchivoJugador = "data/jugadores.dat";
+        LecturaSecuencialJugador lectura = 
+                new LecturaSecuencialJugador(nombreArchivoJugador);
+        lectura.establecerBuscarJugador(nombre);
+        Jugador j = lectura.obtenerBuscarJugador();
+        
+        if (j == null) {
+            System.out.println("El jugador no existe");
+        }else {
+            System.out.println("El jugador si existe");
+        }
     }
 
 }
