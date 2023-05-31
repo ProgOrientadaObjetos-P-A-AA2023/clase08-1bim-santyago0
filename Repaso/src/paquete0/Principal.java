@@ -27,7 +27,7 @@ public class Principal {
                     "1) Ingrese Club",
                     "2) Listar Club",
                     "3) Ingrese Jugador",
-                    "2) Listar Jugador",
+                    "4) Listar Jugador",
                     "5) Buscar un Jugador");
             int opcion = entrada.nextInt();
             if (opcion == 1) {
